@@ -34,6 +34,7 @@ func main() {
 	walkFunction := func(currentPath string, info os.FileInfo, err error) error {
 		fileInfo, _ := os.Lstat(currentPath)
 		if fileInfo.Mode()&os.ModeSymlink != 0 {
+			// Q: skip symlink?
 			fmt.Println("Skipping", currentPath)
 			return nil
 		}

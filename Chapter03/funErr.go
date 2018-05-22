@@ -44,7 +44,7 @@ func main() {
 
 	result, rem, err = division(2, 0)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err) // log err and print "exit status 1"
 	} else {
 		fmt.Println("The result is", result)
 	}

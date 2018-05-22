@@ -24,7 +24,7 @@ func traverse(t *Tree) {
 func create(n int) *Tree {
 	var t *Tree
 	rand.Seed(time.Now().Unix())
-	for i := 0; i < 2*n; i++ {
+	for i := 0; i < 10*n; i++ {
 		temp := rand.Intn(n)
 		t = insert(t, temp)
 	}

@@ -54,7 +54,7 @@ func main() {
 	}
 
 	buf := make([]byte, *minusBS)
-	buf = nil
+	buf = nil // WHY?
 	for i := 0; i < *minusCOUNT; i++ {
 		createBytes(&buf, *minusBS)
 		if _, err := destination.Write(buf); err != nil {

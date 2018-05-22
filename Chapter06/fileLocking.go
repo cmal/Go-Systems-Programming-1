@@ -20,6 +20,7 @@ func writeDataToFile(i int, file *os.File, w *sync.WaitGroup) {
 	fmt.Fprintf(file, "From %d, writing %d\n", i, 2*i)
 	fmt.Printf("Wrote from %d\n", i)
 	w.Done()
+	mu.Unlock()
 }
 
 func main() {

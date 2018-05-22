@@ -13,7 +13,7 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 	}
 
 	mode := fileInfo.Mode()
-	if mode.IsDir() {
+	if mode.IsRegular() {
 		fmt.Println(path)
 	}
 	return nil

@@ -42,7 +42,8 @@ func main() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			newFormat := d1.Format(time.RFC3339)
+			// newFormat := d1.Format(time.RFC3339)
+			newFormat := d1.Format("2006年1月2日 15时04分05秒 UTC+8")
 			fmt.Print(strings.Replace(line, match[1], newFormat, 1))
 		}
 	}

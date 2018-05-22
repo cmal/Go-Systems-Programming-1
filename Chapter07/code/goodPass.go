@@ -36,7 +36,7 @@ func main() {
 	for i = 0; i < LENGTH; i++ {
 		anInt := int(random(MIN, MAX))
 		newChar := string(startChar[0] + byte(anInt))
-		if newChar == " " {
+		if newChar == " " { // WHY?
 			i = i - i
 			continue
 		}

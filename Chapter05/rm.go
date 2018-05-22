@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"flag"
 )
 
 func main() {
@@ -12,10 +13,20 @@ func main() {
 		os.Exit(1)
 	}
 
-	file := arguments[1]
-	err := os.Remove(file)
-	if err != nil {
-		fmt.Println(err)
-		return
+	minusV := flag.Bool("v", false, "verbose mode")
+
+	flag.Parse()
+	flags := flag.Args()
+
+	for _, file := range flags {
+		err := os.Remove(file)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		if *minusV && err == nil {
+			fmt.Println("Removed file: ", file)
+		}
 	}
 }

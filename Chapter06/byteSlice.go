@@ -13,7 +13,7 @@ func main() {
 	}
 	filename := os.Args[1]
 
-	aByteSlice := []byte("Mihalis Tsoukalos!\n")
+	aByteSlice := []byte("Mihalis Tsoukalos!\n") // !!NOTE THIS!!
 	ioutil.WriteFile(filename, aByteSlice, 0644)
 
 	f, err := os.Open(filename)

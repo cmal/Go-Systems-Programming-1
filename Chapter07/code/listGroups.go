@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/user"
+	"sort"
+	"strconv"
 )
 
 func main() {
@@ -26,13 +28,20 @@ func main() {
 	}
 
 	gids, _ := u.GroupIds()
-	for _, gid := range gids {
-		group, err := user.LookupGroupId(gid)
+	gids_int := make([]int, len(gids))
+	for i, s := range gids {
+		gids_int[i], _ = strconv.Atoi(s)
+	}
+
+	sort.Ints(gids_int)
+
+	for _, gid := range gids_int {
+		group, err := user.LookupGroupId(strconv.Itoa(gid))
 		if err != nil {
 			fmt.Println(err)
 			continue
 		}
-		fmt.Printf("%s(%s) ", group.Gid, group.Name)
+		fmt.Printf("%s(%s)\n", group.Gid, group.Name)
 	}
 	fmt.Println()
 }
