@@ -13,19 +13,23 @@ func handleSignal(signal os.Signal) {
 }
 
 func main() {
+	fmt.Println(os.Getpid())
 	ch := make(chan os.Signal, 1)
 	signal.Notify(ch, os.Interrupt, syscall.SIGTERM, syscall.SIGHUP)
 
 	go func() {
-		for sig := <- ch
-		switch sig {
-		case os.Interrupt:
-			handleSignal(sig)
-		case syscall.SIGTERM:
-			handleSignal(sig)
-		case syscall.SIGHUP:
-			fmt.Println("Got: ", sig)
-			os.Exit(-1)
+		for {
+			sig := <-ch
+			switch sig {
+			case os.Interrupt:
+				handleSignal(sig)
+			case syscall.SIGTERM:
+				handleSignal(sig)
+			case syscall.SIGHUP:
+				fmt.Println("Got: ", sig)
+				os.Exit(-1)
+			}
+
 		}
 	}()
 

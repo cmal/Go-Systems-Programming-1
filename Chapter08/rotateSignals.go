@@ -30,7 +30,7 @@ func setUpLogFile(filename string) error {
 }
 
 func main() {
-	filename := "/tmp/myLog.log"
+	filename := "./myLog.log"
 	err := setUpLogFile(filename)
 	if err != nil {
 		fmt.Println(err)
