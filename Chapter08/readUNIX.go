@@ -17,9 +17,13 @@ func readSocket(r io.Reader) {
 }
 
 func main() {
-	c, _ := net.Dial("unix", "/tmp/aSocket.sock")
-	defer c.Close()
 
+	c, err := net.Dial("unix", "./go.sock")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer c.Close()
 	go readSocket(c)
 	n := 0
 	for {
